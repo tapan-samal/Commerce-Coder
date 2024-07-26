@@ -1,34 +1,43 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./landing_page/Navbar";
-import Footer from "./landing_page/Footer";
-import Home from "./landing_page/Home";
-import Login from "./users/Login";
-import Service from "./landing_page/Service";
-import About from "./landing_page/About";
-import Contact from "./landing_page/Contact";
-import Portfolio from "./landing_page/Portfolio";
-import Projects from "./landing_page/Projects";
-import Signup from "./users/Signup";
-import Dashboard from "./dashboard/Dashboard";
-import NotFound from "./landing_page/NotFound";
+import Dashboard from "./modules/dashboard/Dashboard";
+import DashboardHome from "./modules/dashboard/DashboardHome";
+import About from "./modules/home/About";
+import Contact from "./modules/home/Contact";
+import Home from "./modules/home/Home";
+import LandingPage from "./modules/home/LandingPage";
+import NotFound from "./modules/home/NotFound";
+import Portfolio from "./modules/home/Portfolio";
+import Projects from "./modules/home/Projects";
+import Service from "./modules/home/Service";
+import Login from "./modules/users/Login";
+import Signup from "./modules/users/Signup";
+import AddNewClient from "./modules/dashboard/AddNewClient";
+import UpdateClient from "./modules/dashboard/UpdateClient";
+import ForgotPassword from "./modules/users/ForgotPassword";
 
 const App = () => {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route path="/service" element={<Service/>} />
-        <Route path="/projects" element={<Projects/>} />
-        <Route path="/portfolio" element={<Portfolio/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/" element={<LandingPage />}>
+          <Route index element={<Home />} />
+          <Route path="service" element={<Service />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="forgotpassword" element={<ForgotPassword />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="add-client" element={<AddNewClient/>}/>
+          <Route path="update-client" element={<UpdateClient/>}/>
+        </Route>
       </Routes>
-      <Footer />
     </>
   );
 };

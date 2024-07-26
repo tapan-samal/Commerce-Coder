@@ -1,6 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+//Home Page
 .home-page {
-  background-color:  #bfbcf7;
-  
+  background-color: #bfbcf7;
+
   h1 {
     padding-top: 7rem;
     text-align: center;
@@ -11,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 1.5rem;
-    
+
     .content {
       flex: 1;
       margin-left: 2rem;
@@ -22,12 +28,12 @@
       flex: 1;
       margin: 1rem;
       width: 72%;
-      
+
       img {
         border-radius: 6px;
         width: 100%;
 
-        &:hover{
+        &:hover {
           opacity: 0.9;
         }
       }
@@ -50,7 +56,7 @@
         border-radius: 6px;
         width: 100%;
 
-        &:hover{
+        &:hover {
           opacity: 0.9;
         }
       }
@@ -58,5 +64,24 @@
     .content {
       flex: 1;
     }
+  }
+}
+
+//Not found
+.not-found {
+  height: 68vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 5rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 650;
+  }
+  p {
+    font-size: 1.2rem;
   }
 }

@@ -1,8 +1,7 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
-import profile from "../assets/images/tapan.jpeg";
+import logo from "../../assets/images/logo.png";
 import { NavLink} from "react-router-dom";
-import "../assets/css/navbar.scss";
+import "../../assets/css/navbar.scss";
 
 const Navbar = () => {
   return (
@@ -24,7 +23,6 @@ const Navbar = () => {
         <div>
           <NavLink to="/login" className="profile">
             <button>Login</button>
-            {/* <img src={profile} width={200} alt="profile" /> */}
           </NavLink>
         </div>
       </nav>

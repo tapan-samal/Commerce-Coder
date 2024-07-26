@@ -1,7 +1,7 @@
 import React from "react";
-import dev from "../assets/images/dev.jpg";
-import tax from "../assets/images/tax.jpg";
-import "../assets/css/home.scss";
+import dev from "../../assets/images/dev.jpg";
+import tax from "../../assets/images/tax.jpg";
+
 
 const Home = () => {
   return (
@@ -9,7 +9,8 @@ const Home = () => {
       <h1>!!! Welcome to Commerce Coder !!!</h1>
       <div className="dev">
         <div className="content">
-          <h2>Best Web Development Company in India.</h2>
+          <h2>Want to Development a Website...?</h2>
+          <h2>Experts Here for a Scalable and Dynamic Webpage.</h2>
           <br /><br />
           <p>
             100% Trusted and Registered Company in India with a professional
@@ -43,3 +44,4 @@ const Home = () => {
 };
 
 export default Home;
+

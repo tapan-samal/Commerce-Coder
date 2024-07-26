@@ -1,0 +1,245 @@
+//Login
+.login {
+  height: 100vh;
+  background-color: #c1beff;
+  display: flex;
+  align-items: center;
+  padding-top: 2.6rem;
+  .card {
+    display: flex;
+    margin: 0 20% 0 20%;
+    background-color: aliceblue;
+    border-radius: 10px;
+    min-height: 440px;
+    gap: 10px;
+
+    .card-left {
+      flex: 1;
+      background: linear-gradient(rgba(43, 48, 41, 0.5), rgba(0, 50, 100, 0.5));
+      background-size: cover;
+      padding: 22px 33px;
+      color: black;
+      background-position: center;
+      border-radius: 10px 0 0 10px;
+      h1 {
+        font-size: 36px;
+        margin-top: 10px;
+        color: white;
+      }
+      p {
+        margin-top: 6px;
+        font-size: 18px;
+        text-align: justify;
+      }
+      span {
+        margin-top: 6px;
+        font-size: 22px;
+        letter-spacing: 1px;
+        color: white;
+      }
+      button {
+        margin-top: 15px;
+        height: 42px;
+        width: 180px;
+        border-radius: 0px 22px;
+        border: none;
+        background-color: rgb(51, 70, 54);
+        font-size: 20px;
+        letter-spacing: 1.2px;
+        font-weight: 600;
+        color: aliceblue;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+
+        &:hover {
+          background-color: #2c2c2c;
+          transition: 0.3s ease-in;
+        }
+      }
+      img {
+        width: 360px;
+        border-radius: 50%;
+        margin-top: 25px;
+        margin-left: 1%;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+      }
+      img:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .card-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 35px;
+      padding-top: 40px;
+      h1 {
+        font-size: 42px;
+        margin-bottom: 33px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        input {
+          height: 21px;
+          width: 260px;
+          border-radius: 12px;
+          border: none;
+          padding: 8px;
+          background-color: rgb(187, 191, 187);
+          color: rgb(7, 7, 7);
+          font-size: 16px;
+          letter-spacing: 1px;
+        }
+        button {
+          width: 120px;
+          height: 42px;
+          border-radius: 10px;
+          font-size: 21px;
+          font-weight: 600;
+          padding: 6px;
+          border: none;
+          background-color: rgb(59, 80, 63);
+          color: white;
+          letter-spacing: 1.2px;
+          cursor: pointer;
+          transition: 0.3s ease-in;
+
+          &:hover {
+            background-color: #2c2c2c;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Signup
+.register {
+  height: 100vh;
+  background-color: #c1beff;
+  display: flex;
+  align-items: center;
+  padding-top: 2.5rem;
+  .card {
+    display: flex;
+    margin: 0 20% 0 20%;
+    background-color: aliceblue;
+    border-radius: 10px;
+    min-height: 440px;
+    gap: 10px;
+
+    .card-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 35px;
+      padding-top: 40px;
+      h1 {
+        font-size: 42px;
+        margin-bottom: 33px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        input {
+          height: 21px;
+          width: 260px;
+          border-radius: 12px;
+          border: none;
+          padding: 8px;
+          background-color: rgb(187, 191, 187);
+          color: rgb(7, 7, 7);
+          font-size: 16px;
+          letter-spacing: 1px;
+        }
+        button {
+          width: 120px;
+          height: 42px;
+          border-radius: 10px;
+          font-size: 21px;
+          font-weight: 600;
+          padding: 6px;
+          border: none;
+          background-color: rgb(59, 80, 63);
+          color: white;
+          letter-spacing: 1px;
+          cursor: pointer;
+          transition: 0.3s ease-in;
+
+          &:hover {
+            background-color: #2c2c2c;
+            transition: 0.3s ease-in;
+          }
+        }
+      }
+    }
+    .card-right {
+      flex: 1;
+      background: linear-gradient(rgba(10, 50, 0, 0.5), rgba(5, 120, 0, 0.9));
+      background-size: cover;
+      padding: 22px 33px;
+      color: black;
+      background-position: center;
+      border-radius: 0px 10px 10px 0px;
+      h1 {
+        font-size: 36px;
+        margin-top: 10px;
+        color: white;
+      }
+      p {
+        font-size: 18px;
+        text-align: justify;
+        margin-top: 6px;
+      }
+      span {
+        font-size: 22px;
+        letter-spacing: 1px;
+        color: white;
+        margin-top: 6px;
+      }
+      button {
+        margin-top: 15px;
+        height: 42px;
+        width: 180px;
+        border-radius: 0px 22px;
+        border: none;
+        background-color: rgb(51, 70, 54);
+        font-size: 20px;
+        letter-spacing: 1.2px;
+        font-weight: 600;
+        color: aliceblue;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+
+        &:hover {
+          background-color: #2c2c2c;
+          transition: 0.3s ease-in;
+        }
+      }
+      img {
+        width: 360px;
+        border-radius: 50%;
+        margin-top: 25px;
+        margin-left: 1%;
+        opacity: 1;
+        box-shadow: 5px 5px 10px rgba(25, 246, 9, 0.4);
+        transition: opacity 0.5s ease-in-out;
+      }
+      img:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+//Forgot Password
+.forgot_password{
+
+}

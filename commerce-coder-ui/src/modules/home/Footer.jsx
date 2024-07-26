@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
-import "../assets/css/footer.scss";
+import logo from "../../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
+import "../../assets/css/footer.scss";
 
 const Footer = () => {
   return (
@@ -31,11 +31,11 @@ const Footer = () => {
       </div>
       <div className="col3">
         <div className="icon">
-          <i class="fa-solid fa-envelope"></i>
-          <i class="fa-brands fa-square-facebook"></i>
-          <i class="fa-brands fa-linkedin"></i>
-          <i class="fa-brands fa-square-github"></i>
-          <i class="fa-brands fa-square-twitter"></i>
+          <i className="fa-solid fa-envelope"></i>
+          <i className="fa-brands fa-square-facebook"></i>
+          <i className="fa-brands fa-linkedin"></i>
+          <i className="fa-brands fa-square-github"></i>
+          <i className="fa-brands fa-square-twitter"></i>
         </div>
         <div className="copyright">
           Commerce Coder || Copyright © 2024, All Right Reserved.
