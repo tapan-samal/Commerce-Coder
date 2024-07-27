@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const AddNewClient = () => {
   const clientData = {
     name: "",
-    number: "",
+    phone: "",
     pan: "",
     dob: "",
-    password: "",
     itr: "",
+    status: "",
   };
   const [formData, setFormData] = useState({ clientData });
   const [isLoading, setIsLoading] = useState(false);
@@ -70,11 +70,11 @@ const AddNewClient = () => {
             />
           </div>
           <div>
-            <label> Password: </label> <br />
+            <label> Status: </label> <br />
             <input
-              name="password"
+              name="status"
               type="text"
-              value={formData.password}
+              value={formData.status}
               onChange={handleInputData}
             />
           </div>
