@@ -3,6 +3,7 @@ import ErrorHandler from "../middlewares/errorHandler.js";
 import { User } from "../models/userSchema.js";
 import { sendToken } from "../utils/jwtToken.js";
 
+//User Register
 export const signup = catchAsyncError(async (req, res, next) => {
   const { username, email, phone, password } = req.body;
 
@@ -23,6 +24,7 @@ export const signup = catchAsyncError(async (req, res, next) => {
   sendToken("User registered Successfully", user, res, 200);
 });
 
+//User Login
 export const login = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -40,6 +42,7 @@ export const login = catchAsyncError(async (req, res, next) => {
   sendToken("Logged in Successfully", user, res, 200);
 });
 
+//User Logout
 export const logout = catchAsyncError(async (req, res, next) => {
   res.cookie("token", "", {
     expires: new Date(Date.now()),
@@ -50,6 +53,8 @@ export const logout = catchAsyncError(async (req, res, next) => {
     message: "Logged out Successfully!",
   });
 });
+
+//User Display
 export const profile = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user.id);
 
