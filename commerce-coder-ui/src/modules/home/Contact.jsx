@@ -30,30 +30,6 @@ const Contact = () => {
     <div>Contact</div>
     <div>Contact</div>
     <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
-    <div>Contact</div>
     </>
   )
 }

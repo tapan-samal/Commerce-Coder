@@ -1,57 +1,97 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import "../../assets/css/users.scss";
 import Img from "../../assets/images/login.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL_USER } from "../../utils/constant";
 
 const Signup = () => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const {isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:4000/auth/signup", {
-        userName,
-        email,
-        password,
-      })
-      .then((response) => {
-        console.log("Response: ", response);
-        if (response.data.status) {
-          navigate("/login");
-        }
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    
+    try {
+      const response = await axios.post(
+        `${BASE_URL_USER}/signup`,
+        formData,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log("Clicked", formData);
+
+      setFormData({
+        username: "",
+        email: "",
+        phone: "",
+        password: "",
+      });
+      setIsAuthenticated(true);
+      toast.success(response.data.message);
+    } catch (error) {
+      toast.error(error.response?.data?.message || "An error occurred.");
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="register">
       <div className="card">
         <div className="card-left">
           <h1>Signup</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleRegister}>
             <input
               type="text"
+              name="username"
               placeholder="Username"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={formData.username}
+              onChange={handleInputChange}
             />
             <input
-              type="email"
+              type="text"
+              name="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={handleInputChange}
             />
             <input
               type="password"
+              name="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleInputChange}
             />
             <button type="submit">Submit</button>
           </form>

@@ -1,31 +1,46 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import profile from "../../assets/images/tapan.jpeg";
+import React, { useContext, useEffect, useState } from "react";
 import "../../assets/css/dashboard.scss";
+import profile from "../../assets/images/tapan.jpeg";
+import ProfileModal from "./ProfileModal";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
-  const handleDarkMode = () => {};
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDarkMode, handleDarkMode } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark_mode");
+    } else {
+      document.body.classList.remove("dark_mode");
+    }
+  }, [isDarkMode]);
+
   return (
     <div>
       <nav className="header">
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="logo" />
-          </Link>
-        </div>
-        <div className="client">
+        <div className="db_title">
+          {/* <i className="fa-solid fa-table-columns"></i> */}
           <h2>Dashboard</h2>
         </div>
-
         <div className="header_right">
           <div onClick={handleDarkMode} className="dark_mode">
-            <i class="fa-regular fa-moon"></i>
+            <i
+              className={isDarkMode ? "fa-solid fa-sun" : "fa-regular fa-moon"}
+            ></i>
           </div>
-          <Link to="/login" className="profile">
-            <img src={profile} width={200} alt="profile" />
-          </Link>
+          <div className="profile">
+            <img
+              src={profile}
+              width={200}
+              alt="profile"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
+          </div>
         </div>
+        {isMenuOpen && (
+          <ProfileModal isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        )}
       </nav>
     </div>
   );

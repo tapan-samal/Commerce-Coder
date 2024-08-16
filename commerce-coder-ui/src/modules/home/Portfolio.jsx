@@ -30,9 +30,6 @@ const Portfolio = () => {
     <div>Portfolio</div>
     <div>Portfolio</div>
     <div>Portfolio</div>
-    <div>Portfolio</div>
-    <div>Portfolio</div>
-    <div>Portfolio</div>
     </>
   )
 }

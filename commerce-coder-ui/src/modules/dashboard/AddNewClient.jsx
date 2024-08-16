@@ -1,109 +1,97 @@
-import React, { useState } from "react";
-import loader from "../../assets/images/loader.gif";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { createClient } from "../../features/clientDetailSlice";
 
 const AddNewClient = () => {
-  const clientData = {
-    name: "",
+  const initialClientData = {
+    fullname: "",
     phone: "",
     pan: "",
-    dob: "",
     itr: "",
-    status: "",
   };
-  const [formData, setFormData] = useState({ clientData });
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [formData, setFormData] = useState(initialClientData);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.clientDetail);
   const navigate = useNavigate();
+  const { itrType } = useContext(AuthContext);
 
   const handleInputData = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmitClick = (event) => {
+  const handleSubmitClick = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
-    navigate("/dashboard");
+    try {
+      const response = await dispatch(createClient(formData));
+      if (createClient.fulfilled.match(response)) {
+        setFormData(initialClientData);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   };
+
   return (
-    <div>
-      <h2 style={{ textAlign: "center" }}>Add User</h2>
-      {isLoading && <img src={loader} alt="profile" className="loader-gif" />}
-      {!isLoading && (
-        <form className="add-form" onSubmit={handleSubmitClick}>
-          <div>
-            <label>Full Name:</label> <br />
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputData}
-            />
-          </div>
-          <div>
-            <label> Phone Number: </label>
-            <br />
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputData}
-            />
-          </div>
-          <div>
-            <label> PAN Number: </label> <br />
-            <input
-              type="text"
-              name="pan"
-              value={formData.pan}
-              onChange={handleInputData}
-            />
-          </div>
-          <div>
-            <label> Date of Birth: </label> <br />
-            <input
-              type="text"
-              name="dob"
-              value={formData.dob}
-              onChange={handleInputData}
-            />
-          </div>
-          <div>
-            <label> Status: </label> <br />
-            <input
-              name="status"
-              type="text"
-              value={formData.status}
-              onChange={handleInputData}
-            />
-          </div>
-          <div>
-            <label> ITR Type: </label> <br />
-            <input
-              type="text"
-              name="itr"
-              value={formData.itr}
-              onChange={handleInputData}
-            />
-          </div>
-          <div className="submit_btn">
-            <Link to="/dashboard">
-              <button
-                type="submit"
-              >
-                Submit
-              </button>
-            </Link>
-            <Link to="/dashboard">
-              <button type="submit" className="back_btn">
-                Back
-              </button>
-            </Link>
-          </div>
-        </form>
-      )}
-      ;
+    <div className="create_client">
+      <h1>Add New Client</h1>
+      <form className="client_form" onSubmit={handleSubmitClick}>
+        <div className="client_input">
+          <label>Full Name:</label> <br />
+          <input
+            type="text"
+            name="fullname"
+            value={formData.fullname}
+            onChange={handleInputData}
+            placeholder="Full Name..."
+          />
+        </div>
+        <div className="client_input">
+          <label>Phone Number:</label> <br />
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputData}
+            placeholder="Phone Number..."
+          />
+        </div>
+        <div className="client_input">
+          <label>PAN Number:</label> <br />
+          <input
+            type="text"
+            name="pan"
+            value={formData.pan}
+            onChange={handleInputData}
+            placeholder="PAN Number..."
+          />
+        </div>
+        <div className="client_input">
+          <label>ITR Type:</label> <br />
+          <select name="itr" value={formData.itr} onChange={handleInputData}>
+            <option value="" disabled>
+              Select ITR...
+            </option>
+            {itrType.map((itr) => (
+              <option key={itr} value={itr}>
+                {itr}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="client_input">
+          <button type="submit">Submit</button>
+          <Link to="/dashboard">
+            <button type="button" className="back_btn">
+              Back
+            </button>
+          </Link>
+        </div>
+      </form>
     </div>
   );
 };

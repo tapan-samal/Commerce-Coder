@@ -30,9 +30,6 @@ const Projects = () => {
     <div>Projects</div>
     <div>Projects</div>
     <div>Projects</div>
-    <div>Projects</div>
-    <div>Projects</div>
-    <div>Projects</div>
     </>
   )
 }

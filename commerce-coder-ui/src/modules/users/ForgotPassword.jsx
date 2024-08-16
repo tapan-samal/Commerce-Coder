@@ -1,31 +1,23 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = () => {};
-
+  const handleResetbtn = () => {
+    toast.success("Link sent to registered email!")
+  }
   return (
-    <>
-      <div className="forgot_password">
-        <h1>Reset Password</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            value={email}
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            value={password}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Reset</button>
-        </form>
-      </div>
-    </>
+    <div className="forgot_password">
+      <h1>Forgot Password</h1>
+      <form className="form_data">
+        <label>Enter Registered Email:</label>
+        <input type="text" placeholder="Email..."/>
+        <Link to="/resetpassword">
+        <button type="submit" onClick={handleResetbtn}>Reset</button>
+        </Link>
+      </form>
+    </div>
   );
 };
 
