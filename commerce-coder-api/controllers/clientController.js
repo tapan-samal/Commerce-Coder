@@ -2,6 +2,7 @@ import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../middlewares/errorHandler.js";
 import { Client } from "../models/clientSchema.js";
 
+//Create Client
 export const createClient = catchAsyncError(async (req, res, next) => {
   const { fullname, phone, pan, itr, status } = req.body;
   if (!fullname || !phone || !pan || !itr) {
@@ -27,6 +28,7 @@ export const createClient = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Get Clients
 export const getClients = catchAsyncError(async (req, res, next) => {
   const client = await Client.find();
   res.status(200).json({
@@ -35,6 +37,7 @@ export const getClients = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Get Client by Id
 export const getClientById = catchAsyncError(async (req, res, next) => {
   const { id } = req.params;
   const client = await Client.findById(id);
@@ -47,6 +50,7 @@ export const getClientById = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Update Client
 export const updateClient = catchAsyncError(async (req, res, next) => {
   const { id } = req.params;
   let client = await Client.findById(id);
@@ -65,6 +69,7 @@ export const updateClient = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Delete Client
 export const deleteClient = catchAsyncError(async (req, res, next) => {
   const { id } = req.params;
   const client = await Client.findById(id);
